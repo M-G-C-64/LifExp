@@ -50,7 +50,20 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div class="countdown">{timeRemaining}</div>
+        <Expbar />
       </header>
+      <body></body>
+    </div>
+  );
+}
+
+function Expbar() {
+  return (
+    <div className="Expbar">
+      {/* <div className="expbar-description">Life EXP Points</div> */}
+      <div className="expbar-in">
+        <div className="expbar-val" style={{ width: "10%" }}></div>
+      </div>
     </div>
   );
 }
