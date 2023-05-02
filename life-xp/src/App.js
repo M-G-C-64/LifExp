@@ -1,6 +1,32 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 
+const lifeColors = [
+  { name: "Physical Health Life", color: "#FF5733", quantity: 5 },
+  { name: "Emotional Health Life", color: "#1E90FF" },
+  { name: "Financial Life", color: "#228B22" },
+  { name: "Spiritual Life", color: "#FFFF00" },
+  { name: "Intellectual Life", color: "#8B008B" },
+  { name: "Social Life", color: "#FFC0CB" },
+  { name: "Career Life", color: "#FFD700" },
+  { name: "Family Life", color: "#00CED1" },
+  { name: "Creative Life", color: "#FF69B4" },
+  { name: "Travel Life", color: "#FFA500" },
+  { name: "Community Life", color: "#FF8C00" },
+  { name: "Recreational Life", color: "#7FFF00" },
+  { name: "Cultural Life", color: "#6B8E23" },
+  { name: "Environmental Life", color: "#008000" },
+  { name: "Relationship Life", color: "#FF1493" },
+  { name: "Philanthropic Life", color: "#FFDAB9" },
+  { name: "Political Life", color: "#800000" },
+  { name: "Home Life", color: "#800080" },
+  { name: "Self-Care Life", color: "#FFDAB9" },
+  { name: "Romantic Life", color: "#FF69B4" },
+  { name: "Cultural Life", color: "#FFA500" },
+  { name: "Leadership Life", color: "#2F4F4F" },
+  { name: "Presence Life", color: "#FFC0CB" },
+];
+
 function App() {
   const [timeRemaining, setTimeRemaining] = useState(null);
   const [expPoints, setExpPoints] = useState(2500);
@@ -91,50 +117,28 @@ function Expbar({ expPoints }) {
 function Cupboard() {
   return (
     <div className="cup-platform">
-      <div
-        class="cup"
-        style={{
-          background:
-            "linear-gradient(to bottom,#00000005,#00000005 70%,green 30%,rgb(0, 0, 0))",
-        }}
-      >
-        <div class="bubble bubble-1"></div>
-        <div class="bubble bubble-2"></div>
-        <div class="bubble bubble-3"></div>
-      </div>
-      <div
-        class="cup"
-        style={{
-          background:
-            "linear-gradient(to bottom,#00000005,#00000005 60%,orange 40%,rgb(0, 0, 0))",
-        }}
-      >
-        <div class="bubble bubble-1"></div>
-        <div class="bubble bubble-2"></div>
-        <div class="bubble bubble-3"></div>
-      </div>
-      <div
-        class="cup"
-        style={{
-          background:
-            "linear-gradient(to bottom,#00000005,#00000005 80%,blue 20%,rgb(0, 0, 0))",
-        }}
-      >
-        <div class="bubble bubble-1"></div>
-        <div class="bubble bubble-2"></div>
-        <div class="bubble bubble-3"></div>
-      </div>
-      <div
-        class="cup"
-        style={{
-          background:
-            "linear-gradient(to bottom,#00000005,#00000005 60%,cyan 40%,rgb(0, 0, 0))",
-        }}
-      >
-        <div class="bubble bubble-1"></div>
-        <div class="bubble bubble-2"></div>
-        <div class="bubble bubble-3"></div>
-      </div>
+      {lifeColors.map((life_cat) => (
+        <div className="cup-and-name">
+          <div
+            className="cup"
+            style={{
+              background: `linear-gradient(to bottom,#00000005,#00000005 70%,${life_cat.color} 30%,#d3d3d3)`,
+            }}
+          >
+            <div class="bubble bubble-1"></div>
+            <div class="bubble bubble-2"></div>
+            <div class="bubble bubble-3"></div>
+          </div>
+          <div className="cup-name">{life_cat.name}</div>
+          <div className="add-button">
+            <input
+              type="image"
+              src={require("./plus.png")}
+              className="plus-img"
+            ></input>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
