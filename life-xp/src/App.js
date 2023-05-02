@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 const lifeColors = [
-  { name: "Physical Health Life", color: "#FF5733", quantity: 5 },
-  { name: "Emotional Health Life", color: "#1E90FF" },
+  { name: "Physical Health", color: "#FF5733" },
+  { name: "Emotional Health", color: "#1E90FF" },
   { name: "Financial Life", color: "#228B22" },
   { name: "Spiritual Life", color: "#FFFF00" },
   { name: "Intellectual Life", color: "#8B008B" },
@@ -29,7 +29,7 @@ const lifeColors = [
 
 function App() {
   const [timeRemaining, setTimeRemaining] = useState(null);
-  const [expPoints, setExpPoints] = useState(2500);
+  const [expPoints, setExpPoints] = useState(12500);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -117,6 +117,7 @@ function Expbar({ expPoints }) {
 function Cupboard() {
   return (
     <div className="cup-platform">
+      <div className="side-bar"> </div>
       {lifeColors.map((life_cat) => (
         <div className="cup-and-name">
           <div
@@ -133,7 +134,7 @@ function Cupboard() {
           <div className="add-button">
             <input
               type="image"
-              src={require("./plus.png")}
+              src={require("./plus2.png")}
               className="plus-img"
             ></input>
           </div>
