@@ -34,7 +34,7 @@ function App() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       const currentTime = new Date();
-      const january1_2028 = new Date("2028-01-01");
+      const january1_2028 = new Date("2028-09-16");
       const difference = january1_2028 - currentTime;
 
       if (difference > 0) {
@@ -77,9 +77,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div className="digits">
-          <div className="exp-points">{expPoints}/100000 EXPERIENCE</div>
+          <div className="exp-points font-big">
+            {expPoints}/100000 EXPERIENCE
+          </div>
           <div className="logo">--XP--</div>
-          <div className="countdown">{timeRemaining}</div>
+          <div className="countdown font-big">{timeRemaining}</div>
         </div>
 
         <Expbar expPoints={expPoints} />
@@ -117,7 +119,12 @@ function Expbar({ expPoints }) {
 function Cupboard() {
   return (
     <div className="cup-platform">
-      <div className="side-bar"> </div>
+      <div className="side-bar">
+        <button className="add-exp font-big"> ADD EXPERIENCE</button>
+      </div>
+      <div className="side-form-out" id="side-form-out">
+        side form
+      </div>
       {lifeColors.map((life_cat) => (
         <div className="cup-and-name">
           <div
@@ -132,11 +139,11 @@ function Cupboard() {
           </div>
           <div className="cup-name">{life_cat.name}</div>
           <div className="add-button">
-            <input
+            {/* <input
               type="image"
               src={require("./plus2.png")}
               className="plus-img"
-            ></input>
+            ></input> */}
           </div>
         </div>
       ))}
