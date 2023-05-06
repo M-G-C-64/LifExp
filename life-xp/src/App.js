@@ -117,14 +117,72 @@ function Expbar({ expPoints }) {
 }
 
 function Cupboard() {
+  const [formbool, setFormbool] = useState(false);
+  const [inpNumber, setInpNumber] = useState(0);
+
   return (
     <div className="cup-platform">
-      <div className="side-bar">
-        <button className="add-exp font-big"> ADD EXPERIENCE</button>
+      <div className="side-bar" id="side-bar">
+        <button
+          className="add-exp font-big"
+          onClick={() => setFormbool((s) => !s)}
+        >
+          {" "}
+          ADD EXPERIENCE
+        </button>
       </div>
-      <div className="side-form-out" id="side-form-out">
-        side form
-      </div>
+      {formbool ? (
+        <div className="side-form-out font-big" id="side-form-out">
+          <div className="select-category">
+            <select className="select-cat font-big">
+              <option>Select Category</option>
+              {lifeColors.map((l) => (
+                <option key={l.name} value={l.name}>
+                  {l.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="div-input-notes">
+            <input
+              type="text"
+              placeholder="What happened?"
+              className="select-cat font-big input-notes"
+            ></input>
+          </div>
+          <div className="div-image-upload">image</div>
+          <div className="exp-digits-form">
+            <button
+              onClick={() => setInpNumber((s) => (s - 5 >= 0 ? s - 5 : s))}
+              style={
+                inpNumber > 0
+                  ? { backgroundColor: "#ffffff" }
+                  : { backgroundColor: "#505050" }
+              }
+              className="minus-but"
+            >
+              -
+            </button>
+            <div className="font-big input-number">
+              {inpNumber.toString().padStart(2, "0")} EXP
+            </div>
+            <button
+              onClick={() => setInpNumber((s) => (s + 5 <= 25 ? s + 5 : s))}
+              style={
+                inpNumber < 25
+                  ? { backgroundColor: "#ffffff" }
+                  : { backgroundColor: "#505050" }
+              }
+              className="plus-but"
+            >
+              +
+            </button>
+          </div>
+          <div className="div-submit-form">
+            <button className="submit-form font-big">SUBMIT</button>
+          </div>
+        </div>
+      ) : null}
       {lifeColors.map((life_cat) => (
         <div className="cup-and-name">
           <div
